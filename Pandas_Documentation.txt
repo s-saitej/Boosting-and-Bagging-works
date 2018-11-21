@@ -1,0 +1,169 @@
+Pandas
+
+Documentaiton : pandas.pydata.org
+
+pd.read_format(filename)
+
+eg. pd.read_csv(fn)
+	pd.read_sql(fn)
+	pd.read_excel(fn)
+	pd.read_html(fn)
+	pd.read_table(fn)
+
+	df = pd.DataFrame(dictionary_name) #From a dict (dict = dictionary) we create a DataFrame.
+
+df.to_format(filename)
+
+eg. df.to_csv(fn)
+	df.to_excel(fn)
+	df.to_sql(fn)
+	df.to_json(fn)
+
+Data Frame is created when we are having different formats in dictionary.
+
+Series is created when we have similar formats of data.
+
+pd.Series(lsit_name)
+
+
+df.shape = Gives how many coloumns and how many rows
+df.shape[0] = Gives number of rows
+df.shape[1] = Gives number of coloumns.
+
+
+
+To create a random numbers from Numpy : np.random.rand(number of rows, number of coloumns) -creating matrix
+										np.random.rand(number of rows) -creating array
+
+
+										when matrix is created we store it in dataframe similary series for array
+
+Check for pd.data_range() - no.58
+
+
+series.value_counts() - Gives count of all values in a series
+
+
+df.apply() - Gives count of values in a dataframe.
+
+
+
+To look at the coloumns in a data
+df['coloumn_name'] - Prints only that coloumn on a data.
+
+To look at purticular rows and coloumns
+df.iloc[number of rowns to be displayed:number of coloumns to be displayed]
+
+
+
+PANDAS
+
+Here in data science we use pandas to manipulate data in the files which contain huge amount of data.
+When coming to data science always first load data into py-shell through the help of pandas.
+
+import pandas
+pandas.read_csv("path/file.csv",sep='\t')
+
+// Here \t represents data is sepearted by tabular spaces.
+
+then if we want to print it then there is no variable to print. So we assign a varialble to the above data
+
+df = pandas.read_csv("path/file.csv",sep='\t') or we can use df = pandas.DataFrame(dictionary) where if dictionary contains data
+
+then to print,
+
+print(df)
+
+A data frame may contain millions of rows. So if we want to see only some number of rows we use head(no_of_rows_from_top) function which belongs to data frames.
+
+df.head(8)
+
+This will print the output of first 8 rows
+
+
+Similarly like head, if we want to display the last rows then we use tail(no_of_rows_from_bottom) function which belongs to data frames.
+
+df.tail(8)
+
+This will print the output of last 8 rows
+
+To display the middle rows, we use iloc[from index of rows:to index of rows]
+
+To check the type of variable we have a function called type()
+
+type(df)
+
+This gives the data type of df i.e data frame
+
+****To get the shape of data frame, we use shape attribute which belongs to data frames.
+Shape is not a function of data frame.
+
+df.shape
+
+This gives number of rows and coloumns of data set.
+
+To look at the coloumn names, we use df.columns
+
+
+df.dtypes() will show the data types of columns.
+
+
+
+
+Slicing Of Data:
+
+df[['name of column']]   ---- This is used to produce subset of only one column
+
+i.e if we have df['country'] gives the country coloumn in a data set
+
+
+
+
+
+df[['name of column1','name of column2']]   ---- This is used to produce subset of many columns. The inner square brackets represents list of columns.
+
+
+
+
+1)That is to reduce number of coloumns we use df[['names','names']]
+2)To reduce number of rows we use head , tail and iloc functions
+
+By using 1 and 2 we can create the sub data set from existing data set. ie creating a sample from population.
+
+
+
+
+
+
+
+
+
+Groupby function :
+
+A sample data set take may doesnt have all countries in it. So we have to check for the coloumn which is similar to all the countries and group them all.
+
+We have year's in common for all the countries
+
+so we use 
+
+df.groupby('year')['lifeExp'].mean()	---- Here we have did, grouped all countries by year then took out lifExp and then calculated mean of all lifeExp's of all countries in year.
+
+Always groupby is done to calculate attrbutes like mean , median etc. So we have to specify eighter to calculate mean, median or any operation while we do grouping.
+Here Year doesnt change.
+
+
+
+
+
+
+
+Concatenation of DataSets:
+
+Here to concatenate the data sets, we need to create a data frames in it.
+consider data frames are created and represented as df1,df2,df3
+
+Let these data frames consists of columns A,B,C,D and rows 0,1,2,3
+
+Now concatenate the datasets in row wise, df = pd.concat([df1,df2,df3], axis = 0)
+Simalrly to concatenate datasets in column wise, df = pd.concate([df1,df2,df3], axis=1)
+
